@@ -43,7 +43,9 @@ Batería de 11.1V y 1800mAh que proporciona energía a todos los componentes, co
 ## Preparación del Robot
 
 ### Utilizar el Programa Precargado (ROS)
-El robot viene con un programa en la placa OpenCR 1.0 para su uso con ROS. Si deseas trabajar con ROS, no es necesario cambiar este programa. (Adjuntar código).
+El robot viene con un programa en la placa OpenCR 1.0 para su uso con ROS. Si deseas trabajar con ROS, no es necesario cambiar este firmware.
+En caso de cambiar el firmware de la placa y querer volver a utilizarlo para ROS, seguir los pasos que se muestran en el siguiente enlace:
+[Instrucciones para utilizar la openCR 1.0 con ROS](https://emanual.robotis.com/docs/en/platform/turtlebot3/opencr_setup/#opencr-setup)
 
 ### Cargar el Programa para la Librería Python
 
