@@ -1,96 +1,97 @@
 # TurtleBot3-NoROS-Library
-Librería en Python diseñada para facilitar el control del robot TurtleBot 3 Burger sin necesidad de utilizar ROS. Con TurtleBot3-NoROS-Library, podrás acceder a las funciones de bajo nivel del robot de manera directa y sencilla, sin enfrentar la curva de aprendizaje de ROS. Además, la librería está diseñada para ser compatible tanto con el robot físico como con el simulador Webots, permitiendo a los usuarios utilizar el mismo código en ambos entornos. Este proyecto también incluye ejemplos y guías para ayudarte a empezar rápidamente, ya sea en simulación o en el mundo real.
+Python library designed to facilitate the control of the TurtleBot 3 Burger robot without the need to use ROS. With TurtleBot3-NoROS-Library, you can access the robot's low-level functions directly and easily without the learning curve of ROS. Additionally, the library is designed to be compatible with both the physical robot and the Webots simulator, allowing users to use the same code in both environments. This project also includes examples and guides to help you get started quickly, either in simulation or in the real world.
 
-# Guía de Uso de TurtleBot3-NoROS-Library
+# TurtleBot3-NoROS-Library Usage Guide
 
 ![Turtlebot3 Burger](images/turtlebot3.jpg)
 
-## Componentes del Robot
+## Robot Components
 
 ### Raspberry Pi 3
-El cerebro del Turtlebot3, responsable de procesar la información y ejecutar los algoritmos de control.
+TurtleBot3's brain, responsible for processing information and executing control algorithms.
 
 ![Raspberry Pi 3](images/Raspberry_Pi_3_B+_(26931245278).png)
 
-### Servomotores Dynamixel XL430-W250
-Motores de alta precisión que controlan el movimiento del robot.
+### Dynamixel XL430-W250 Servomotors
+High-precision motors that control the robot's movement.
 
 ![Servomotores Dynamixel XL430-W250](images/xl430_product.png)
 
-### LiDAR LDS-01
-Sensor que mide distancias y detecta obstáculos en 360° mediante láser.
+### LDS-01 LiDAR
+Sensor that measures distances and detects obstacles in 360° using a laser.
 
 ![LiDAR LDS-01](images/lds_small.png)
 
-#### Placa USB2LDS
-Interfaz que conecta el LiDAR con la Raspberry Pi.
+#### USB2LDS Board
+Interface that connects the LiDAR to the Raspberry Pi.
 
 ![USB2LDS board](images/USB2LDS.jpeg)
 
-### Placa OpenCR 1.0
-Controlador central que gestiona la comunicación entre los componentes del robot y la Raspberry Pi.
+### OpenCR 1.0 Board
+Central controller that manages communication between the robot's components and the Raspberry Pi.
 
 ![OpenCR 1.0 board](images/opencr.png)
 
-#### IMU (Unidad de Medición Inercial)
-Proporciona datos de orientación y aceleración, esenciales para la navegación del robot.
+#### IMU (Inertial Measurement Unit)
+Provides orientation and acceleration data, essential for the robot's navigation.
 
-### Batería
-Batería de 11.1V y 1800mAh que proporciona energía a todos los componentes, con una autonomía de aproximadamente 2 horas y 30 minutos.
+### Battery
+11.1V, 1800mAh battery that powers all components, with an autonomy of approximately 2 hours and 30 minutes.
 
 ![LIPO Battery 11.1V 1,800mAh](images/bateriaTB3.jpeg)
 
-## Preparación del Robot
+## Preparing the Robot
 
-### Utilizar el Programa Precargado (ROS)
-El robot viene con un programa en la placa OpenCR 1.0 para su uso con ROS. Si deseas trabajar con ROS, no es necesario cambiar este firmware.
-En caso de cambiar el firmware de la placa y querer volver a utilizarlo para ROS, seguir los pasos que se muestran en el siguiente enlace:
+### Using the Preloaded Firmware (ROS)
+The robot comes with a firmware on the OpenCR 1.0 board for using ROS. If you wish to work with ROS, it is not necessary to change this firmware.  
+If you change the board firmware and want to use it with ROS again, follow the steps shown in the following link:  
 [Instrucciones para utilizar la openCR 1.0 con ROS](https://emanual.robotis.com/docs/en/platform/turtlebot3/opencr_setup/#opencr-setup)
 
-### Cargar el Programa para la Librería Python
+### Loading the Program for the Python Library
 
-Para usar la librería Python, sigue estos pasos:
+To use the Python library, follow these steps:
 
-1. **Configurar Arduino IDE:**
-   - Abre Arduino IDE y ve a `File -> Preferences -> Additional Boards Manager URLs`.
-   - Añade la siguiente URL: `https://raw.githubusercontent.com/ROBOTIS-GIT/OpenCR/master/arduino/opencr_release/package_opencr_index.json`.
-   - Instala la librería **Dynamixel2Arduino** desde el Library Manager.
+1. **Download and Configure Arduino IDE:**
+   - Download Arduino IDE from the following link: [Arduino IDE Download](https://www.arduino.cc/en/software)
+   - Open Arduino IDE and go to `File -> Preferences -> Additional Boards Manager URLs`.
+   - Add the following URL: `https://raw.githubusercontent.com/ROBOTIS-GIT/OpenCR/master/arduino/opencr_release/package_opencr_index.json`.
+   - Install the **Dynamixel2Arduino** library from the Library Manager.
 
 ![Preferences](images/arduinoIDE1.PNG) ![Library Manager](images/libraryManager.PNG)
 
-2. **Conectar OpenCR 1.0 al Ordenador:**
-   - Conecta la placa OpenCR 1.0 al ordenador mediante USB.
+2. **Connect OpenCR 1.0 to the Computer:**
+   - Connect the OpenCR 1.0 board to your computer via USB.
 
-3. **Cargar el Programa:**
-   - Asegúrate de que la placa OpenCR 1.0 esté seleccionada en Arduino IDE.
-   - Carga el programa correcto para usar la librería Python. (Adjuntar código).
+3. **Load the Program:**
+   - Ensure the OpenCR 1.0 board is selected in Arduino IDE.
+   - Load the correct program to use the Python library. Code is located in openCR_code folder of this repository.
 
-### Conectarse a la Raspberry Pi 3
+### Connect to the Raspberry Pi 3
 
-Con el programa cargado en la placa OpenCR 1.0, conecta y configura la Raspberry Pi 3 del Turtlebot para cargar los archivos de la librería.
+With the program loaded on the OpenCR 1.0 board, connect and configure the TurtleBot's Raspberry Pi 3 to load the library files.
 
-1. **Conexión SSH:**
-   - Conecta la Raspberry Pi 3 a la misma red que tu ordenador.
-   - Utiliza un cliente SSH (como PuTTY) para conectarte a la Raspberry Pi 3.
+1. **SSH Connection:**
+   - Connect the Raspberry Pi 3 to the same network as your computer.
+   - Use an SSH client (like PuTTY) to connect to the Raspberry Pi 3.
 
-2. **Clonar el Repositorio:**
-   - Clona el repositorio de la librería en la Raspberry Pi 3:
-     ```
+2. **Clone the Repository:**
+   - Clone the library repository on the Raspberry Pi 3:
+     ```bash
      git clone git@github.com:jpperezm/TurtleBot3-NoROS-Library.git
-       ```
-
-4. **Ejecutar programa de prueba:**
-   - Ejecuta el programa de prueba para comprobar que la librería funciona correctamente:
      ```
+
+3. **Run Test Program:**
+   - Run the test program to verify that the library works correctly:
+     ```bash
      python turtlebot_python_wrapper/test_code/odometry.py
      ```
-Si todo está configurado correctamente, el robot debería moverse hacia adelante unos centimetros y parar.
+   If everything is set up correctly, the robot should move forward a few centimeters and stop.
 
-## Uso de la Librería con Webots (Simulador)
+## Using the Library with Webots (Simulator)
 
-### Cargar código del simulador a la Raspberry Pi 3
+### Uploading Simulator Code to the Raspberry Pi 3
 
-Para cargar el código del simulador en la Raspberry Pi 3 se debe crear un fichero .sh en ubuntu o .bat en windows con el siguiente contenido, sustituyendo los valores de las variables por los correspondientes a tu configuración:
+To upload the simulator code to the Raspberry Pi 3, create a `.sh` file in Ubuntu or a `.bat` file in Windows with the following content, replacing the variable values with your configuration:
 
 **Ubuntu:**
 ```bash
@@ -169,15 +170,14 @@ echo Usage: %~nx0 {deploy^|run^|clean}
 exit /b 1
 ```
 
-Este fichero se debe ejecutar con el siguiente comando en ubuntu:
-
+This file should be executed with the following command in Ubuntu:
 ```bash
 ./deploy.sh deploy
 ```
 
-En windows se debe ejecutar con el siguiente comando:
+In Windows, execute it with the following command:
 
 ```bash
 deploy.bat deploy
 ```
-También basta con hacer doble click en el fichero .bat.
+Alternatively, simply double-click the .bat file.
